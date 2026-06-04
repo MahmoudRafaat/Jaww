@@ -6,35 +6,9 @@ Jaww is a native iOS weather application built with SwiftUI that delivers real-t
 ## 🛠️ Technologies Used
 
 ### 🍎 SwiftUI
-**What it is:** Apple's modern declarative UI framework introduced in 2019, used to build the entire interface of Jaww.
-
-**Why it's used here:**
-- Build beautiful, responsive screens with less code
-- Declarative syntax makes UI state management clean and predictable
-- Native support for animations, transitions, and dark/light mode
-- Built-in navigation stack for moving between screens (Home → Hourly Forecast → Saved Locations)
-
----
 
 ### 🌐 URLSession
-**What it is:** Apple's built-in networking framework for making HTTP requests — no third-party libraries needed.
 
-**Why it's used here:**
-- Fetches live weather data from the WeatherAPI REST endpoint
-- Handles asynchronous network calls using Swift's modern `async/await` syntax
-- Lightweight and fully native — no extra dependencies
-
----
-
-### 🔄 Codable (JSONDecoder)
-**What it is:** Swift's built-in protocol for encoding and decoding data — used here to parse JSON responses from the API into Swift model objects.
-
-**Why it's used here:**
-- Automatically maps the WeatherAPI JSON response into clean Swift structs
-- Handles nested JSON objects like `forecast`, `hour`, `condition`, and `day`
-- Type-safe and eliminates manual JSON parsing
-
----
 
 ### 📐 MVVM Architecture (Model - View - ViewModel)
 **What it is:** A software design pattern that separates the app into three layers — data (Model), UI (View), and logic (ViewModel).

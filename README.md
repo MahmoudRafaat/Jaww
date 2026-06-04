@@ -1,7 +1,4 @@
-# جو | Jaww — Weather App
-
-> *"Jaww" (جو) — Arabic for "atmosphere" and "weather". A name that speaks for itself.*
-
+# Jaww — Weather App
 Jaww is a native iOS weather application built with SwiftUI that delivers real-time weather conditions, multi-day forecasts, and an immersive time-aware UI — all powered by live data from WeatherAPI.
 
 ---

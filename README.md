@@ -12,10 +12,11 @@ JAWW is a native iOS weather app built entirely with SwiftUI. It shows real-time
 ## 📸 Screenshots
 
 <!-- Home Screen -->
-<!-- Search Screen -->
+<img width="596" height="946" alt="image" src="https://github.com/user-attachments/assets/03577a82-ad49-49bb-a2c4-d99eb2f82c93" />
 <!-- City Weather Screen -->
-<!-- Favorites Screen -->
-<!-- Hourly Forecast Screen -->
+<img width="545" height="1000" alt="image" src="https://github.com/user-attachments/assets/86791634-332d-45ef-820f-486221c104a5" />
+<img width="479" height="977" alt="image" src="https://github.com/user-attachments/assets/04e1d429-5b43-493a-90dc-77b575369a62" />
+
 
 ---
 

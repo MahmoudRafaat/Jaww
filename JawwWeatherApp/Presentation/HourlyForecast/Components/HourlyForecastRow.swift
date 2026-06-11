@@ -9,12 +9,13 @@ import SwiftUI
 import Kingfisher
 struct HourlyForecastRow: View {
     let hour: HourlyForecast
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         HStack(spacing: 16) {
             Text(hour.time.hourFormatted())
                 .font(.system(size: 15, weight: .medium))
-                .foregroundColor(.gray)
+                .foregroundColor(themeManager.primaryTextColor)
                 .frame(width: 55, alignment: .leading)
 
             KFImage(URL(string: "https:\(hour.condition.icon)"))
@@ -28,7 +29,7 @@ struct HourlyForecastRow: View {
 
             Text(hour.condition.text)
                 .font(.system(size: 14))
-                .foregroundColor(.gray)
+                .foregroundColor(themeManager.primaryTextColor)
                 .lineLimit(1)
 
             Spacer()
@@ -51,7 +52,7 @@ struct HourlyForecastRow: View {
         }
         .padding(.vertical, 12)
         .padding(.horizontal, 16)
-        .background(Color(red: 0.12, green: 0.14, blue: 0.17))
+        .background(themeManager.cardBackgroundColor)
         .cornerRadius(14)
     }
 }

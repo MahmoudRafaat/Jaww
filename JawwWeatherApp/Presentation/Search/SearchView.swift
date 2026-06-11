@@ -38,7 +38,7 @@ struct SearchView: View {
                             .foregroundColor(.gray)
 
                         TextField("Search city...", text: $searchModel.searchText)
-                            .foregroundColor(.white)
+                            .foregroundColor(themeManager.primaryTextColor)
                             .tint(.blue)
                             .autocorrectionDisabled()
                     
@@ -49,13 +49,13 @@ struct SearchView: View {
                                 searchModel.results = []
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(themeManager.primaryTextColor)
                             }
                         }
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 12)
-                    .background(Color(red: 0.12, green: 0.14, blue: 0.17))
+                    .background(themeManager.cardBackgroundColor)
                     .cornerRadius(14)
                 }
                 .padding(.horizontal)

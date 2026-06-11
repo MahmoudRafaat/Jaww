@@ -61,7 +61,7 @@ struct CityWeatherView: View {
                          .font(.system(size: 16, weight: .medium))
                  }
                  .foregroundColor(themeManager.primaryTextColor)
-                 .padding(.horizontal, 12)
+                
                  .padding(.vertical, 8)
                  .background(Color.white.opacity(0.08))
                  .clipShape(Capsule())
@@ -72,11 +72,9 @@ struct CityWeatherView: View {
 
             VStack(spacing: 2) {
                 Text(city.name)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 37, weight: .regular))
                     .foregroundColor(themeManager.primaryTextColor)
-                Text("\(city.region), \(city.country)")
-                    .font(.system(size: 13))
-                    .foregroundColor(.gray)
+                
             }
 
             Spacer()

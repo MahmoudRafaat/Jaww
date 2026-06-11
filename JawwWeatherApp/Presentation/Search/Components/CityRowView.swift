@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CityRowView: View {
     let city: SearchCity
+    @EnvironmentObject var themeManager: ThemeManager
 
     var body: some View {
         HStack(spacing: 14) {
@@ -26,7 +27,7 @@ struct CityRowView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(city.name)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(themeManager.primaryTextColor)
 
                 Text("\(city.region), \(city.country)")
                     .font(.system(size: 13))
@@ -38,7 +39,7 @@ struct CityRowView: View {
         }
         .padding(.vertical, 10)
         .padding(.horizontal, 14)
-        .background(Color(red: 0.12, green: 0.14, blue: 0.17))
+        .background(themeManager.cardBackgroundColor)
         .cornerRadius(14)
     }
 

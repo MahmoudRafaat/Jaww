@@ -20,65 +20,78 @@ struct WeatherCardTemp: View {
             LazyVGrid(columns: columns, spacing: 8) {
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("VISIBILITY")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                    HStack(spacing: 6) {
+                        Image(systemName: "eye.fill")
+                        Text("VISIBILITY")
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    
                     Text("\(Int(current.windKph)) KM")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundColor(themeManager.primaryTextColor)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.1))
+                .background(themeManager.cardBackgroundColor)
                 .cornerRadius(16)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("FEELS LIKE")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                    HStack(spacing: 6) {
+                        Image(systemName: "thermometer.medium")
+                        Text("FEELS LIKE")
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    
                     Text("\(Int(current.feelslikeC))°")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundColor(themeManager.primaryTextColor)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.1))
+                .background(themeManager.cardBackgroundColor)
                 .cornerRadius(16)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("PRESSURE")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                    HStack(spacing: 6) {
+                        Image(systemName: "gauge.medium")
+                        Text("PRESSURE")
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    
                     Text("\(Int(current.pressureMb))")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundColor(themeManager.primaryTextColor)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.1))
+                .background(themeManager.cardBackgroundColor)
                 .cornerRadius(16)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("HUMIDITY")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                    HStack(spacing: 6) {
+                        Image(systemName: "humidity")
+                        Text("HUMIDITY")
+                    }
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    
                     Text("\(current.humidity)%")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundColor(themeManager.primaryTextColor)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.1))
+                .background(themeManager.cardBackgroundColor)
                 .cornerRadius(16)
             }
             .padding()
         }
     }
 }
-//#Preview {
-//    WeatherCardTemp().environmentObject(ThemeManager())
-//}

@@ -15,7 +15,8 @@ struct JawwWeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView().environmentObject(themeManager)
-        }.modelContainer(for: CachedWeather.self)
+        }
+        .modelContainer(for: [CachedWeather.self, CachedForecastDay.self, CachedHourlyForecast.self])
        
     }
 }

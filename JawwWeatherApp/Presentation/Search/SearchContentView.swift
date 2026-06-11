@@ -55,7 +55,7 @@ struct SearchContentView: View {
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(viewModel.results) { city in
-                        NavigationLink(destination: CityWeatherView(city: city)) {
+                        NavigationLink(destination: CityWeatherView(city: city,previousScreenTitle: "Search")) {
                             CityRowView(city: city)
                         }
                     }

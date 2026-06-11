@@ -23,14 +23,19 @@ struct ForecastCardView: View {
             }
 
             Divider().background(Color.gray.opacity(0.5))
-
             ForEach(weatherData.forecast.forecastday) { dayData in
-                DailyForecastRow(
-                    day: dayData.date,
-                    iconURL: URL(string: "https:\(dayData.day.condition.icon)"),
-                    minTemp: Int(dayData.day.mintempC),
-                    maxTemp: Int(dayData.day.maxtempC)
-                )
+                NavigationLink(destination: HourlyForecastView(
+                    day: dayData,
+                    cityName: weatherData.location.name
+                )) {
+                    DailyForecastRow(
+                        day: dayData.date,
+                        iconURL: URL(string: "https:\(dayData.day.condition.icon)"),
+                        minTemp: Int(dayData.day.mintempC),
+                        maxTemp: Int(dayData.day.maxtempC)
+                    )
+                }
+                .buttonStyle(.plain)
                 Divider().background(Color.gray.opacity(0.5))
             }
         }

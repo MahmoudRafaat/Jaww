@@ -15,7 +15,7 @@ struct JawwWeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView().environmentObject(themeManager)
-        }
+        }.modelContainer(for: CachedWeather.self)
        
     }
 }

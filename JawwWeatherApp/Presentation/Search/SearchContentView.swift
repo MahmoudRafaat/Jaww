@@ -55,7 +55,9 @@ struct SearchContentView: View {
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(viewModel.results) { city in
-                        CityRowView(city: city)
+                        NavigationLink(destination: CityWeatherView(city: city)) {
+                            CityRowView(city: city)
+                        }
                     }
                 }
                 .padding(.horizontal)

@@ -12,7 +12,8 @@ enum Config {
         guard let url = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
             fatalError("BASE_URL not found in Info.plist")
         }
-        return url
+        print(url)
+        return url.replacingOccurrences(of: "http://", with: "https://")
     }
     
     static var apiKey: String {

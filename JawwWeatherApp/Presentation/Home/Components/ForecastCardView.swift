@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ForecastCardView: View {
     let weatherData: WeatherResponse
-
+    @EnvironmentObject var themeManager: ThemeManager
     var body: some View {
         VStack {
             HStack(spacing: 6) {
@@ -40,7 +40,7 @@ struct ForecastCardView: View {
             }
         }
         .padding()
-        .background(Color(red: 0.12, green: 0.14, blue: 0.17))
+        .background(themeManager.cardBackgroundColor)
         .cornerRadius(16)
     }
 }

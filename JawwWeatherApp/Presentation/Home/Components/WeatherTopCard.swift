@@ -16,9 +16,7 @@ struct WeatherTopCard: View {
         let todayForecast = weatherData.forecast.forecastday.first
         
         VStack(spacing: 4) {
-//            Text(weatherData.location.name)
-//                .font(.system(size: 37, weight: .regular))
-//                .foregroundColor(themeManager.primaryTextColor)
+
             
             KFImage(URL(string: "https:\(weatherData.current.condition.icon)"))
                 .placeholder {
@@ -38,9 +36,26 @@ struct WeatherTopCard: View {
                 .foregroundColor(themeManager.primaryTextColor)
             
             if let today = todayForecast {
-                Text("H:\(Int(today.day.maxtempC))°  L:\(Int(today.day.mintempC))°")
-                    .font(.system(size: 21, weight: .medium))
-                    .foregroundColor(themeManager.primaryTextColor)
+                HStack(spacing: 16) {
+                    
+            
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.up")
+                            .foregroundColor(.red)
+                        Text("H:\(Int(today.day.maxtempC))°")
+                    }
+                    
+                 
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.down")
+                            .foregroundColor(.green)
+                        Text("L:\(Int(today.day.mintempC))°")
+                    }
+                    
+                }
+               
+                .font(.system(size: 21, weight: .medium))
+                .foregroundColor(themeManager.primaryTextColor)
             }
         }
     }

@@ -81,7 +81,7 @@ struct DailyForecastRow: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal)
-        .background(Color(red: 0.12, green: 0.14, blue: 0.17))
+        .background(themeManager.cardBackgroundColor)
     }
 }
 

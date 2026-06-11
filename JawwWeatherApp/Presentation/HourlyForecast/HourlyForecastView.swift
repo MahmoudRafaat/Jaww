@@ -44,7 +44,7 @@ struct HourlyForecastView: View {
                         .font(.system(size: 16, weight: .medium))
                 }
                 .foregroundColor(themeManager.primaryTextColor)
-                .padding(.horizontal, 12)
+                
                 .padding(.vertical, 8)
                 .background(Color.white.opacity(0.08))
                 .clipShape(Capsule())
@@ -53,7 +53,7 @@ struct HourlyForecastView: View {
             Spacer()
 
             VStack(spacing: 2) {
-                Text(day.date.formattedForecastDay())
+                Text(day.date.formattedForecastDayFull())
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(themeManager.primaryTextColor)
                 Text("Hourly Forecast")

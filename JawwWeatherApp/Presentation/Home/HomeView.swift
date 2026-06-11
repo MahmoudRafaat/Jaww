@@ -12,6 +12,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var themeManager: ThemeManager
+    @Environment(\.modelContext) private var context
     @StateObject private var homeModel = HomeViewModel()
     var body: some View {
         NavigationStack {
@@ -23,7 +24,10 @@ struct HomeView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 0) {
-                    navigationBar()
+                    if let weatherData = homeModel.weatherResponse {
+                        
+                        navigationBar(city: weatherData)}
+                    
                     HomeContentView(viewModel: homeModel)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -31,22 +35,27 @@ struct HomeView: View {
             .navigationBarHidden(true)
             .toolbarBackground(.hidden, for: .navigationBar)
             .ignoresSafeArea(.all, edges: .bottom)
-            .task { homeModel.loadForecast() }
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-                if homeModel.weatherResponse == nil {
-                    homeModel.loadForecast()
-                }
-            }
-        }.alert("Location Access Needed", isPresented: $homeModel.showLocationSettingsAlert) {
+    
+           
+        }.task {  homeModel.setUp(cacheService: WeatherCacheService(context: context)) } .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            print("sfasfasfsafasfsafasfasfsafasfasfsafsa")
+               homeModel.loadForecast()
+           
+       }
+        .alert("Location Access Needed", isPresented: $homeModel.showLocationSettingsAlert) {
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url)
                 }
             }
             Button("Cancel", role: .cancel) { }
+               
         } message: {
             Text("Please enable location access in Settings so Jaww can show your local weather.")
         }
+//        .onAppear {
+//           
+//        }
     }
     
 }

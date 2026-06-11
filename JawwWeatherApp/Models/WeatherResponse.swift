@@ -1,14 +1,13 @@
 
 import Foundation
 
-// MARK: - Root Response
+
 struct WeatherResponse: Codable {
     let location: Location
     let current: CurrentWeather
     let forecast: Forecast
 }
 
-// MARK: - Location
 struct Location: Codable {
     let name: String
     let region: String
@@ -27,7 +26,6 @@ struct Location: Codable {
     }
 }
 
-// MARK: - Current Weather
 struct CurrentWeather: Codable {
     let lastUpdatedEpoch: Int
     let lastUpdated: String
@@ -59,7 +57,7 @@ struct CurrentWeather: Codable {
     }
 }
 
-// MARK: - Forecast
+
 struct Forecast: Codable {
     let forecastday: [ForecastDay]
 }
@@ -80,7 +78,7 @@ struct ForecastDay: Codable, Identifiable {
     }
 }
 
-// MARK: - Day Metrics
+
 struct DayMetrics: Codable {
     let maxtempC: Double
     let mintempC: Double
@@ -106,7 +104,6 @@ struct DayMetrics: Codable {
     }
 }
 
-// MARK: - Astro
 struct Astro: Codable {
     let sunrise: String
     let sunset: String
@@ -118,7 +115,6 @@ struct Astro: Codable {
     }
 }
 
-// MARK: - Hourly Forecast
 struct HourlyForecast: Codable, Identifiable {
     var id: Int { timeEpoch }
     let timeEpoch: Int
@@ -148,7 +144,7 @@ struct HourlyForecast: Codable, Identifiable {
     }
 }
 
-// MARK: - Weather Condition
+
 struct WeatherCondition: Codable {
     let text: String
     let icon: String

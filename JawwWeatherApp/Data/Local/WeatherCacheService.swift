@@ -41,15 +41,31 @@ protocol WeatherCacheServiceProtocol {
                 existing.isDay = weather.current.isDay
                 existing.uv = weather.current.uv
                 existing.lastUpdated = Date()
-                existing.forecastDays = weather.forecast.forecastday.map {
+                existing.forecastDays = weather.forecast.forecastday.map { forecastDay in
                     CachedForecastDay(
-                        date: $0.date,
-                        maxTempC: $0.day.maxtempC,
-                        dateEpoch: $0.dateEpoch, 
-                        minTempC: $0.day.mintempC,
-                        conditionIcon: $0.day.condition.icon,
-                        conditionText: $0.day.condition.text,
-                        chanceOfRain: $0.day.dailyChanceOfRain
+                        date: forecastDay.date,
+                        dateEpoch: forecastDay.dateEpoch,
+                        maxTempC: forecastDay.day.maxtempC,
+                        minTempC: forecastDay.day.mintempC,
+                        conditionIcon: forecastDay.day.condition.icon,
+                        conditionText: forecastDay.day.condition.text,
+                        chanceOfRain: forecastDay.day.dailyChanceOfRain,
+                        hours: forecastDay.hour.map { h in
+                            CachedHourlyForecast(
+                                timeEpoch: h.timeEpoch,
+                                time: h.time,
+                                tempC: h.tempC,
+                                isDay: h.isDay,
+                                conditionText: h.condition.text,
+                                conditionIcon: h.condition.icon,
+                                windKph: h.windKph,
+                                windDir: h.windDir,
+                                humidity: h.humidity,
+                                chanceOfRain: h.chanceOfRain,
+                                feelslikeC: h.feelslikeC,
+                                uv: h.uv
+                            )
+                        }
                     )
                 }
                 if isFavorite { existing.isFavorite = true }

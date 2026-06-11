@@ -14,7 +14,7 @@ struct FavoritesView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
 
-            VStack(spacing: 10) {
+            VStack(spacing: 0) {
                 navigationBar
                 contentArea
             }

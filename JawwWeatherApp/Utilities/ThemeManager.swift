@@ -20,10 +20,10 @@ class ThemeManager: ObservableObject {
     }
 
     var primaryTextColor: Color {
-        return isMorning ? .black : .white
+        return isMorning ? .white : .white
     }
     
     var backgroundImageName: String {
-        return isMorning ? "morning_background" : "dark_background"
+        return isMorning ? "dark_background" : "dark_background"
     }
 }

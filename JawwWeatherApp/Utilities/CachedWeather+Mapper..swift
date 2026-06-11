@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 extension CachedWeather {
 
     static func from(
@@ -14,16 +13,31 @@ extension CachedWeather {
         query: String,
         isFavorite: Bool = false
     ) -> CachedWeather {
-        let days = weather.forecast.forecastday.map {
+        let days = weather.forecast.forecastday.map { forecastDay in
             CachedForecastDay(
-                date: $0.date,
-                
-                maxTempC: $0.day.maxtempC,
-                dateEpoch: $0.dateEpoch,
-                minTempC: $0.day.mintempC,
-                conditionIcon: $0.day.condition.icon,
-                conditionText: $0.day.condition.text,
-                chanceOfRain: $0.day.dailyChanceOfRain
+                date: forecastDay.date,
+                dateEpoch: forecastDay.dateEpoch,
+                maxTempC: forecastDay.day.maxtempC,
+                minTempC: forecastDay.day.mintempC,
+                conditionIcon: forecastDay.day.condition.icon,
+                conditionText: forecastDay.day.condition.text,
+                chanceOfRain: forecastDay.day.dailyChanceOfRain,
+                hours: forecastDay.hour.map { h in      // ← map hours
+                    CachedHourlyForecast(
+                        timeEpoch: h.timeEpoch,
+                        time: h.time,
+                        tempC: h.tempC,
+                        isDay: h.isDay,
+                        conditionText: h.condition.text,
+                        conditionIcon: h.condition.icon,
+                        windKph: h.windKph,
+                        windDir: h.windDir,
+                        humidity: h.humidity,
+                        chanceOfRain: h.chanceOfRain,
+                        feelslikeC: h.feelslikeC,
+                        uv: h.uv
+                    )
+                }
             )
         }
 
@@ -67,11 +81,7 @@ extension CachedWeather {
                 lastUpdated: "",
                 tempC: tempC,
                 isDay: isDay,
-                condition: WeatherCondition(
-                    text: conditionText,
-                    icon: conditionIcon,
-                    code: 0
-                ),
+                condition: WeatherCondition(text: conditionText, icon: conditionIcon, code: 0),
                 windKph: windKph,
                 windDir: windDir,
                 pressureMb: pressureMb,
@@ -95,18 +105,32 @@ extension CachedWeather {
                             avgvisKm: 0,
                             avghumidity: 0,
                             dailyChanceOfRain: day.chanceOfRain,
-                            condition: WeatherCondition(
-                                text: day.conditionText,
-                                icon: day.conditionIcon,
-                                code: 0
-                            ),
+                            condition: WeatherCondition(text: day.conditionText, icon: day.conditionIcon, code: 0),
                             uv: 0
                         ),
                         astro: Astro(sunrise: "", sunset: "", moonPhase: ""),
-                        hour: []
+                        hour: day.hours.map { h in       // ← restore hours
+                            HourlyForecast(
+                                timeEpoch: h.timeEpoch,
+                                time: h.time,
+                                tempC: h.tempC,
+                                isDay: h.isDay,
+                                condition: WeatherCondition(text: h.conditionText, icon: h.conditionIcon, code: 0),
+                                windKph: h.windKph,
+                                windDir: h.windDir,
+                                humidity: h.humidity,
+                                chanceOfRain: h.chanceOfRain,
+                                feelslikeC: h.feelslikeC,
+                                uv: h.uv
+                            )
+                        }
                     )
                 }
             )
         )
+    }
+
+    func toSearchCity() -> SearchCity {
+        SearchCity(id: 0, name: cityName, region: region, country: country, lat: 0, lon: 0, url: query)
     }
 }

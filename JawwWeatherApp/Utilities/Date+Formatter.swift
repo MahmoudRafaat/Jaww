@@ -14,4 +14,12 @@ extension String {
         outputFormatter.dateFormat = "EEE"
         return outputFormatter.string(from: date)
     }
+    func hourFormatted() -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        guard let date = inputFormatter.date(from: self) else { return self }
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "h a"   // "2 PM"
+        return outputFormatter.string(from: date)
+    }
 }

@@ -16,17 +16,22 @@ struct SearchView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                HStack(spacing: 12) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundColor(themeManager.primaryTextColor)
-                            .padding(10)
-                            .background(Color.white.opacity(0.08))
-                            .clipShape(Circle())
-                    }
+                HStack {
+                     Button { dismiss() } label: {
+                         HStack(spacing: 6) {
+                             Image(systemName: "chevron.left")
+                                 .font(.system(size: 16, weight: .semibold))
+                             
+                             Text("Home")
+                                 .font(.system(size: 16, weight: .medium))
+                         }
+                         .foregroundColor(themeManager.primaryTextColor)
+                         .padding(.horizontal, 12)
+                         .padding(.vertical, 8)
+                         .background(Color.white.opacity(0.08))
+                         .clipShape(Capsule())
+                     }
+
 
                     HStack(spacing: 10) {
                         Image(systemName: "magnifyingglass")

@@ -15,7 +15,7 @@ struct navigationBar: View {
     }
     var body: some View {
         HStack(alignment: .center) {
-            NavigationLink(destination: Text("Favorites Page Destination")) {
+            NavigationLink(destination: FavoritesView()) {
                 Image(systemName: "star")
                     .font(.system(size: 24, weight: .medium))
                     .symbolRenderingMode(.hierarchical)

@@ -15,7 +15,10 @@ struct HomeContentView: View {
         if viewModel.isLocationDenied {
             LocationDeniedView()
         } else if let weatherData = viewModel.weatherResponse {
-            weatherContent(for: weatherData)
+            if viewModel.isFromCache {
+                            CacheBannerView(lastUpdated: viewModel.lastUpdatedDate)
+                        }
+            WeatherContentView(weatherData: weatherData)
         } else if let errorMessage = viewModel.errorMessage {
             Text(errorMessage)
                 .foregroundColor(.red)
@@ -28,18 +31,7 @@ struct HomeContentView: View {
         }
     }
 
-    private func weatherContent(for weatherData: WeatherResponse) -> some View {
-        ScrollView {
-            WeatherTopCard(weatherData: weatherData)
-                .padding(.top, 20)
-            WeatherCardTemp(current: weatherData.current)
-            ForecastCardView(weatherData: weatherData)
-        }
-        .padding(.horizontal)
-    }
+
 }
 
-#Preview {
-    HomeContentView(viewModel: HomeViewModel())
-        .environmentObject(ThemeManager())
-}
+

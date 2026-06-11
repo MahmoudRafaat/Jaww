@@ -16,9 +16,9 @@ struct WeatherTopCard: View {
         let todayForecast = weatherData.forecast.forecastday.first
         
         VStack(spacing: 4) {
-            Text(weatherData.location.name)
-                .font(.system(size: 37, weight: .regular))
-                .foregroundColor(themeManager.primaryTextColor)
+//            Text(weatherData.location.name)
+//                .font(.system(size: 37, weight: .regular))
+//                .foregroundColor(themeManager.primaryTextColor)
             
             KFImage(URL(string: "https:\(weatherData.current.condition.icon)"))
                 .placeholder {

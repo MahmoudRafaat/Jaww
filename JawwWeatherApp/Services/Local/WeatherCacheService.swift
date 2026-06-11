@@ -28,6 +28,9 @@ protocol WeatherCacheServiceProtocol {
             )
 
             if let existing = try? context.fetch(descriptor).first {
+                existing.cityName = weather.location.name
+                   existing.region = weather.location.region
+                   existing.country = weather.location.country
                 existing.tempC = weather.current.tempC
                 existing.feelslikeC = weather.current.feelslikeC
                 existing.conditionText = weather.current.condition.text

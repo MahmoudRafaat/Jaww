@@ -14,8 +14,9 @@ struct WeatherContentView: View {
         ScrollView {
             WeatherTopCard(weatherData: weatherData)
                 .padding(.top, 20)
-            WeatherCardTemp(current: weatherData.current)
             ForecastCardView(weatherData: weatherData)
+            WeatherCardTemp(current: weatherData.current)
+           
         }
         .padding(.horizontal)
     }

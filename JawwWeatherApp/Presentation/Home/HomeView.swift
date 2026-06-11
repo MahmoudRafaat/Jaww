@@ -53,9 +53,9 @@ struct HomeView: View {
         } message: {
             Text("Please enable location access in Settings so Jaww can show your local weather.")
         }
-//        .onAppear {
-//           
-//        }
+        .onAppear {
+            homeModel.loadForecast()
+        }
     }
     
 }
